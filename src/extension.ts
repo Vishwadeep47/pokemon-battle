@@ -17,10 +17,16 @@ export function activate(context: vscode.ExtensionContext) {
 
 export function deactivate() {}
 
+
 function getBattleHTML(): string {
   return `<!DOCTYPE html>
 <html>
 <head>
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'none';
+             img-src https://raw.githubusercontent.com;
+             script-src 'unsafe-inline';
+             style-src 'unsafe-inline';">
   <style>
     body { font-family: monospace; background: #1a1a2e; color: #eee; text-align: center; padding: 20px; }
     .battle-area { display: flex; justify-content: space-around; margin: 30px 0; }
@@ -38,21 +44,37 @@ function getBattleHTML(): string {
   <h1>⚡ Pokémon Battle!</h1>
 
   <div class="battle-area">
+
     <div class="pokemon-card">
+      <img
+        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/6.gif"
+        width="120" height="120"
+        style="image-rendering: pixelated;"
+        onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png'"
+      />
       <h2>🔥 Charizard</h2>
       <p>HP: <span id="p1-hp">100</span>/100</p>
       <div style="background:#333; border-radius:6px; overflow:hidden">
         <div class="hp-bar" id="p1-bar" style="width:100%"></div>
       </div>
     </div>
+
     <div style="font-size: 3em; align-self: center">⚔️</div>
+
     <div class="pokemon-card">
+      <img
+        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/9.gif"
+        width="120" height="120"
+        style="image-rendering: pixelated; transform: scaleX(-1);"
+        onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'"
+      />
       <h2>💧 Blastoise</h2>
       <p>HP: <span id="p2-hp">100</span>/100</p>
       <div style="background:#333; border-radius:6px; overflow:hidden">
         <div class="hp-bar" id="p2-bar" style="width:100%"></div>
       </div>
     </div>
+
   </div>
 
   <div>
