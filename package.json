@@ -14,19 +14,17 @@
   "contributes": {
     "commands": [
       {
-        "command": "pokemon-battle.helloWorld",
-        "title": "Hello World"
+        "command": "pokemon-battle.start",
+        "title": "⚡ Start Pokémon Battle!"
       }
     ]
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "pretest": "npm run compile && npm run lint",
-    "lint": "eslint src",
-    "test": "vscode-test"
-  },
+  "vscode:prepublish": "npm run compile",
+  "compile": "tsc -p ./",
+  "watch": "tsc -watch -p ./",
+  "lint": "eslint src"
+},
   "devDependencies": {
     "@types/vscode": "^1.110.0",
     "@types/mocha": "^10.0.10",
